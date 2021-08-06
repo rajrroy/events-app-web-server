@@ -9,7 +9,7 @@
 //      cluster-1 
 //      asia-east1-a
 //      the following values can be found in the yaml:
-//      [DEPLOYMENT_NAME]
+//      demo-ui
 //      demo-ui (in the template/spec section of the deployment)
 
 pipeline {
@@ -59,7 +59,7 @@ pipeline {
                 sh 'gcloud container clusters get-credentials cluster-1 --zone asia-east1-a --project dtcaugust2021-203'
                 echo 'Update the image'
                 echo "gcr.io/dtcaugust2021-203/gcr.io/dtcaugust2021-203/web-server-image:2.${env.BUILD_ID}"
-                sh "kubectl set image deployment/[DEPLOYMENT_NAME] demo-ui=gcr.io/dtcaugust2021-203/gcr.io/dtcaugust2021-203/web-server-image:v2.${env.BUILD_ID} --record"
+                sh "kubectl set image deployment/demo-ui demo-ui=gcr.io/dtcaugust2021-203/gcr.io/dtcaugust2021-203/web-server-image:v2.${env.BUILD_ID} --record"
             }
         }
     }
